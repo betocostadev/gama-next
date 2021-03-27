@@ -1,13 +1,35 @@
-import Seo from '../components/Seo'
-import { Container } from '../styles/pages/Home/style'
+import Image from 'next/image'
+import dynamic from 'next/dynamic'
+import { useState } from 'react'
+
+import Seo from '../components/Seo';
+import { Container } from '../styles/pages/Home/style';
+
+// Lazy Loading
+const ModalContent = dynamic(
+  () => import('../components/Modal'),
+  { loading: () => <p>Carregando...</p> }
+)
 
 export default function Home() {
+  const [ isShow, setIsShow ] = useState(false)
+
+  const handleOpenModal = (isShow) => {
+    setIsShow(!isShow)
+  }
+
   return (
-    <div>
-      <Seo title="Hello" description="Uma descrição aqui" />
+    <>
+      <Seo title="Fala galera" description="Seja bem vindo e blá" />
       <Container>
+        <Image src="/img/logo.png" height={80} width={200}/>
         <h1>Hello NextJS</h1>
+        <button onClick={ handleOpenModal }>{ isShow ? 'Fechar Modal' : 'Abrir modal'}</button>
+
+        <div>
+          { isShow && <ModalContent />}
+        </div>
       </Container>
-    </div>
+    </>
   )
 }

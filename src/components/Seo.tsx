@@ -1,39 +1,35 @@
 import Head from 'next/head'
 
 interface SeoProps {
-  title: string
-  description?: string
-  image?: string
-  containSuffix?: boolean
+    title: string;
+    description?: string;
+    image?: string;
+    containSufix?: boolean; 
 }
 
 export default function Seo({
     title,
     description,
     image,
-    containSuffix
-  }: SeoProps) {
-    const pageTitle = `${title} ${ !containSuffix ? ' | Gama' : containSuffix}`
-  return (
-    <Head>
-      <title>{ pageTitle }</title>
-      { description && <meta name="description" content={ description } />}
-      { image && <meta name="image" content={image} />}
+    containSufix
+}: SeoProps) {
+    const pageTitle = `${title} ${ !containSufix ? ' | Gama Academy' : ''  }`
+    return (
+        <Head>
+            <title>{pageTitle}</title>
+            {description && <meta name="description" content={description} />}
+            {image && <meta name="image" content={image} />}
 
-      <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
-      <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png" />
-
-      <meta property="og:locale" content="pt_BR" />
-      <meta property="og:url" content="https://www.meusite.com.br/ola-mundo" />
-      <meta property="og:title" content="Utilizando as meta tags do Facebook." />
-      <meta property="og:description" content="O tutorial para compartilhar o conteúdo do seu site de forma eficaz." />
-      <meta property="og:image" content="img/ms-icon-310x310.png" />
-      <meta property="og:image:type" content="image/png" />
-      <meta property="og:image:width" content="800" />
-      <meta property="og:image:height" content="600" />
-
-    </Head>
-  )
+            <link rel="shortcut icon" href="favicon.ico" />
+            <meta property="og:locale" content="pt_BR" />
+            <meta property="og:url" content="https://www.meusite.com.br/ola-mundo" />
+            <meta property="og:title" content="Utilizando as meta tags do Facebook." />
+            <meta property="og:site_name" content="Accenture Academy" />
+            <meta property="og:description" content="O tutorial para compartilhar o conteúdo do seu site de forma eficaz." />
+            <meta property="og:image" content="/img/gama-icon.jpeg" />
+            <meta property="og:image:type" content="image/jpeg" />
+            <meta property="og:image:width" content="800" />
+            <meta property="og:image:height" content="600" />
+        </Head>
+    )
 }

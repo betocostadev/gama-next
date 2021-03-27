@@ -1,8 +1,8 @@
-import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
+  static async getInitialProps(ctx: DocumentContext ) {
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
 
@@ -29,12 +29,17 @@ export default class MyDocument extends Document {
   }
 
   render(){
-    return (
-      // Headers next.js
-      <Html lang="pt-br">
+    return(
+      <Html lang="pt-BR">
         <Head>
-            <meta charSet="UTF-8"/>
+          <meta charSet="utf-8" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,900;1,400&display=swap" rel="stylesheet"/>
         </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
       </Html>
     )
   }
