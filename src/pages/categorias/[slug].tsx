@@ -4,6 +4,7 @@ import { ParsedUrlQuery } from 'node:querystring'
 
 import api from '../../service/api'
 import { Container } from '../../styles/pages/Home/style'
+import { CurrencyTemplate } from '../../lib'
 
 interface IRecommended{
   id: number;
@@ -30,7 +31,7 @@ export default function Categories( { courses }: AllRecomended ){
       <div>
         <ul>
           { courses.map(course => (
-            <li key={course.id}>{course.title} {course.price}</li>
+            <li key={course.id}>{course.title} {CurrencyTemplate(course.price)}</li>
           ))}
         </ul>
       </div>
@@ -70,8 +71,7 @@ export const getStaticProps: GetStaticProps<AllRecomended | ParsedUrlQuery> = as
     return {
       props: {
         courses
-      },
-      revalidate: 60
+      }
     }
   } catch (error) {
     console.log(error)
