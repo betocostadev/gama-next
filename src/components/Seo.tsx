@@ -4,16 +4,19 @@ interface SeoProps {
   title: string
   description?: string
   image?: string
+  containSuffix?: boolean
 }
 
 export default function Seo({
     title,
     description,
-    image
+    image,
+    containSuffix
   }: SeoProps) {
+    const pageTitle = `${title} ${ !containSuffix ? ' | Gama' : containSuffix}`
   return (
     <Head>
-      <title>{ title }</title>
+      <title>{ pageTitle }</title>
       { description && <meta name="description" content={ description } />}
       { image && <meta name="image" content={image} />}
 
