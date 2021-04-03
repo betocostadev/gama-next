@@ -35,6 +35,9 @@ export default function Categories( { courses }: AllRecomended ){
           ))}
         </ul>
       </div>
+      <div>
+        <p><a href="/">Back to home</a></p>
+      </div>
     </Container>
   )
 }
